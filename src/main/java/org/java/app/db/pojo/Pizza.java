@@ -1,5 +1,7 @@
 package org.java.app.db.pojo;
 
+import java.text.DecimalFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +24,7 @@ public class Pizza {
 	private String description;
 	
 	@Lob
-	@Column(columnDefinition = "text", unique = true)
+	@Column(columnDefinition = "text")
 	private String url;
 	
 	@Column(nullable = false)
@@ -75,5 +77,10 @@ public class Pizza {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	
+	@Override
+	public String toString() {
+		return getName() + " - " + String.format("%.02f", ((float) getPrice() / 100f)) + "€\n" + getDescription() + "\n";
 	}
 }

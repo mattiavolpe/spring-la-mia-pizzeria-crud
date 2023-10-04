@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+    
+    <title>My pizzas</title>
+  </head>
+  
+  <body>
+		
+		<header th:replace="frags/frags :: header"></header>
+		
+		<div class="container">
+	    
+	    <ul th:if="${pizzas.size > 0}" class="list-unstyled text-center">
+				<li th:each="pizza : ${pizzas}" th:object="${pizza}" class="mb-3 pb-3 border-bottom">
+					<h3 class="mb-0">
+						<strong>[[*{name}]]</strong> - [[*{#numbers.formatDecimal({price / 100}, 1, 2)}]]€
+					</h3>
+					<P>[[*{description}]]</P>
+					<img th:src="*{url}" width="300" />
+				</li>
+			</ul>
+			
+			<h3 th:unless="${pizzas.size > 0}">
+				There are no pizzas
+			</h3>
+			
+		</div>
+    
+  </body>
+  
+</html>
