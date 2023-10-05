@@ -20,4 +20,10 @@ public class PizzaService {
 	public void savePizza(Pizza pizza) {
 		pizzaRepo.save(pizza);
 	}
+	
+	public Pizza findById(int id) {
+		Pizza pizza = pizzaRepo.findById(id).get();
+//		System.out.println(pizza);
+		return pizza;
+	}
 }
