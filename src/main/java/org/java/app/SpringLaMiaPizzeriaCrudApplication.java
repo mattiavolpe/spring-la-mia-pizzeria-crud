@@ -21,7 +21,7 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Pizza pizza1 = new Pizza("Margherita", "Best pizza in the world", "https://images.pexels.com/photos/6605214/pexels-photo-6605214.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 795);
+		Pizza pizza1 = new Pizza("Margherita", "Best pizza in the world", "https://images.pexels.com/photos/6605214/pexels-photo-6605214.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 700);
 		
 		Pizza pizza2 = new Pizza("Tonno e cipolla", "Second best pizza in the world", "https://images.pexels.com/photos/1049626/pexels-photo-1049626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 900);
 		

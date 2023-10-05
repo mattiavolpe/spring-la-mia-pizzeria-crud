@@ -13,13 +13,14 @@
   
   <body>
 		
-		<header th:replace="frags/frags :: header()"></header>
+		<header th:replace="~{frags/frags :: header}"></header>
 		
 		<div class="container">
 			
 			<form>
 				<label for="name">Search</label>
-				<input type="text" name="name">
+				<br />
+				<input type="text" name="name" id="name">
 				<button type="submit">Search</button>
 			</form>
 	    
