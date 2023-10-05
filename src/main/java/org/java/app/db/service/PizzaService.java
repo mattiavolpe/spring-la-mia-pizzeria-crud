@@ -23,7 +23,10 @@ public class PizzaService {
 	
 	public Pizza findById(int id) {
 		Pizza pizza = pizzaRepo.findById(id).get();
-//		System.out.println(pizza);
 		return pizza;
 	}
+
+	public List<Pizza> filterByNameOrDescription(String name, String description) {
+		return pizzaRepo.findByNameContainingOrDescriptionContaining(name, description);
+	}	
 }

@@ -16,14 +16,22 @@
 		<header th:replace="frags/frags :: header()"></header>
 		
 		<div class="container">
+			
+			<form>
+				<label for="name">Search</label>
+				<input type="text" name="name">
+				<button type="submit">Search</button>
+			</form>
 	    
 	    <ul th:if="${pizzas.size > 0}" class="list-unstyled text-center">
 				<li th:each="pizza : ${pizzas}" th:object="${pizza}" class="mb-3 pb-3 border-bottom">
-					<h3 class="mb-0">
-						<strong>[[*{name}]]</strong> - [[*{#numbers.formatDecimal({price / 100}, 1, 2)}]]€
-					</h3>
-					<P>[[*{description}]]</P>
-					<img th:src="*{url}" width="300" />
+					<a th:href="@{/{id}(id=*{id})}" class="text-decoration-none text-dark">
+						<h3 class="mb-0">
+							<strong>[[*{name}]]</strong> - [[*{#numbers.formatDecimal({price / 100}, 1, 2)}]]€
+						</h3>
+						<P>[[*{description}]]</P>
+						<img th:src="*{url}" width="300" />
+					</a>
 				</li>
 			</ul>
 			
