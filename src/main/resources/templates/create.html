@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+    
+    <title>New pizza</title>
+  </head>
+  
+  <body>
+		
+		<header th:replace="~{frags/frags :: header}"></header>
+		
+		<div class="container">
+			
+			<form method="post" action="/create" th:object="${pizza}">
+				
+				<div class="my-4">
+					<div class="d-flex align-items-center gap-3">
+						<label for="name" class="w-25">Name: </label>
+						<input type="text" name="name" id="name" minlength="3" maxlength="100" th:field="*{name}" required>
+					</div>
+					<ul th:if="${#fields.hasErrors('name')}" class="alert alert-danger list-unstyled mt-2">
+						<li th:each="error : ${#fields.errors('name')}">[[${error}]]</li>
+					</ul>
+				</div>
+				
+				<div class="my-4">
+					<div class="d-flex align-items-center gap-3">
+						<label for="description" class="w-25">Description: </label>
+						<input type="text" name="description" id="description" minlength="3" maxlength="2000" th:field="*{description}" required>
+					</div>
+					<ul th:if="${#fields.hasErrors('description')}" class="alert alert-danger list-unstyled mt-2">
+						<li th:each="error : ${#fields.errors('description')}">[[${error}]]</li>
+					</ul>
+				</div>
+				
+				<div class="my-4">
+					<div class="d-flex align-items-center gap-3">
+						<label for="url" class="w-25">Image URL: </label>
+						<input type="text" name="url" id="url" minlength="3" maxlength="2000" th:field="*{url}" required>
+					</div>
+					<ul th:if="${#fields.hasErrors('url')}" class="alert alert-danger list-unstyled mt-2">
+						<li th:each="error : ${#fields.errors('url')}">[[${error}]]</li>
+					</ul>
+				</div>
+				
+				<div class="my-4">
+					<div class="d-flex align-items-center gap-3">
+						<label for="price" class="w-25">Price (in cents of €): </label>
+						<input type="number" name="price" id="price" min="1" th:field="*{price}" required>
+					</div>
+					<ul th:if="${#fields.hasErrors('price')}" class="alert alert-danger list-unstyled mt-2">
+						<li th:each="error : ${#fields.errors('price')}">[[${error}]]</li>
+					</ul>
+				</div>
+				
+				<br />
+				
+				<button class="btn btn-outline-dark" type="submit">Insert</button>
+				
+			</form>
+			
+		</div>
+    
+  </body>
+  
+</html>

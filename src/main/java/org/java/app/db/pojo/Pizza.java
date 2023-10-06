@@ -1,11 +1,15 @@
 package org.java.app.db.pojo;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 public class Pizza {
@@ -14,17 +18,24 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@NotBlank(message = "This field is required")
+	@Length(min = 3, max = 100, message = "Insert between 3 and 100 characters")
 	@Column(unique = true, nullable = false, length = 100)
 	private String name;
 	
+	@NotBlank(message = "This field is required")
+	@Length(min = 3, max = 2000, message = "Insert between 3 and 2000 characters")
 	@Lob
-	@Column(columnDefinition = "text")
+	@Column(columnDefinition = "text", nullable = false)
 	private String description;
 	
+	@NotBlank(message = "This field is required")
+	@Length(min = 3, max = 2000, message = "Insert between 3 and 2000 characters")
 	@Lob
-	@Column(columnDefinition = "text")
+	@Column(columnDefinition = "text", nullable = false)
 	private String url;
 	
+	@Positive(message = "Price must be a positive number")
 	@Column(nullable = false)
 	private int price;
 	
