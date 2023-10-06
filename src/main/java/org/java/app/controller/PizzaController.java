@@ -52,7 +52,6 @@ public class PizzaController {
 	
 	@PostMapping("/create")
 	public String store(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
-		
 		if (bindingResult.hasErrors()) {
 			return "create";
 		}
