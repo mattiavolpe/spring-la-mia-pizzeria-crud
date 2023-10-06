@@ -21,7 +21,7 @@
 				<label for="filter">Search</label>
 				<br />
 				<div class="d-flex align-items-center gap-3">
-					<input type="text" name="filter" id="filter" th:value="${filter}">
+					<input type="text" name="filter" id="filter" placeholder="Type a filter..." th:value="${filter}">
 					<button class="btn btn-outline-dark" type="submit">Search</button>
 				</div>
 			</form>
@@ -31,14 +31,22 @@
 			</div>
 			
 			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-				<div class="col mb-5 pb-3" th:each="pizza : ${pizzas}" th:object="${pizza}">
-					<a th:href="@{/{id}(id=*{id})}" class="text-decoration-none text-dark">
-						<img th:src="*{url}" width="300" class="mb-2" />
-						<h3 class="mb-0">
-							<strong>[[*{name}]]</strong> - [[*{#numbers.formatDecimal({price / 100}, 1, 2)}]]€
-						</h3>
-						<p class="mb-0">[[*{description}]]</p>
-					</a>
+				<div class="col mb-5 pb-3 text-center" th:each="pizza : ${pizzas}" th:object="${pizza}">
+					<div class="card h-100">
+						<div class="card-header h-100 position-relative d-flex align-items-center justify-content-center">
+							<a th:href="@{/{id}(id=*{id})}" class="text-decoration-none text-dark">
+								<img th:src="*{url}" width="300" class="card-img-top mb-2" />
+							</a>
+						</div>
+						<div class="card-body">
+							<a th:href="@{/{id}(id=*{id})}" class="text-decoration-none text-dark">
+								<h3 class="mb-0">
+									<strong>[[*{name}]]</strong> - [[*{#numbers.formatDecimal({price / 100}, 1, 2)}]]€
+								</h3>
+								<p class="mb-0">[[*{description}]]</p>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 			

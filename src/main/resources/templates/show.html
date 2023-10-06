@@ -17,12 +17,12 @@
 		
 		<div class="container">
 	    
-			<div class="mb-3 pb-3 border-bottom">
+			<div class="text-center mb-3 pb-3 border-bottom">
 				<h3 class="mb-0">
 					<strong>[[*{name}]]</strong> - [[*{#numbers.formatDecimal({price / 100}, 1, 2)}]]€
 				</h3>
 				<P>[[*{description}]]</P>
-				<img th:src="*{url}" width="300" />
+				<img th:src="*{url}" style="width: 60%; min-width: 296px;"/>
 			</div>
 			
 			<h3 th:if="${pizza == null}">
