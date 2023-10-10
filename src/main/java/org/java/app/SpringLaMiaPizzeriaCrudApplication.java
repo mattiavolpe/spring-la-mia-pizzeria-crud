@@ -23,9 +23,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Pizza pizza1 = new Pizza("Margherita", "Tomato sauce and mozzarella", "https://images.pexels.com/photos/6605214/pexels-photo-6605214.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 700);
 		
-		Pizza pizza2 = new Pizza("Tonno e cipolla", "Natural tuna, red onions and mozzarella", "https://www.galbani.it/sites/default/files/styles/width_1920/public/se_tonno_buona_da_star_bene_980x357.jpg", 900);
+		Pizza pizza2 = new Pizza("Tuna and onion", "Natural tuna, red onions and mozzarella", "https://www.galbani.it/sites/default/files/styles/width_1920/public/se_tonno_buona_da_star_bene_980x357.jpg", 900);
 		
-		Pizza pizza3 = new Pizza("Capricciosa", "Tomato sauce, artichokes, mushrooms, anchovies, black olives and mozzarella", "https://images.pexels.com/photos/1049626/pexels-photo-1049626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 900);
+		Pizza pizza3 = new Pizza("Capricious", "Tomato sauce, artichokes, mushrooms, anchovies, black olives, baked ham and mozzarella", "https://www.pizza.it/wp-content/uploads/import/body/1/8/9/4/pizza_capricciosa_-_by_pizza.it_.jpg", 900);
 		
 		pizzaService.savePizza(pizza1);
 		pizzaService.savePizza(pizza2);

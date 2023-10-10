@@ -47,20 +47,49 @@ public class PizzaController {
 	public String create(Model model) {
 		model.addAttribute("pizza", new Pizza());
 		
-		return "create";
+		return "create-update";
 	}
 	
 	@PostMapping("/create")
 	public String store(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
-			return "create";
+			return "create-update";
 		}
 		
 		try {
 			pizzaService.savePizza(pizza);			
 		} catch (Exception e) {
-			return "create";
+			return "create-update";
 		}
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable int id, Model model) {
+		model.addAttribute("pizza", pizzaService.findById(id));
+		
+		return "create-update";
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String update(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			return "create-update";
+		}
+		
+		try {
+			pizzaService.savePizza(pizza);			
+		} catch (Exception e) {
+			return "create-update";
+		}
+		
+		return "redirect:/";
+	}
+	
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable int id, Model model) {
+		pizzaService.deleteById(id);
 		
 		return "redirect:/";
 	}

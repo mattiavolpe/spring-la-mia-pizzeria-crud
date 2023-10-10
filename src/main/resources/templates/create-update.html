@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 	
-	<head th:replace="~{frags/frags :: pageHead('New pizza')}" />
+	<head th:replace="~{frags/frags :: pageHead(${pizza.id} == 0 ? 'New pizza' : 'Edit pizza ' + ${pizza.name})}" />
   
   <body>
 		
@@ -9,7 +9,7 @@
 		
 		<div class="container">
 			
-			<form method="post" action="/create" th:object="${pizza}">
+			<form method="post" th:object="${pizza}">
 				
 				<div class="my-4">
 					<div class="d-flex align-items-center gap-3">
