@@ -52,17 +52,7 @@ public class PizzaController {
 	
 	@PostMapping("/create")
 	public String store(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
-		if (bindingResult.hasErrors()) {
-			return "create-update";
-		}
-		
-		try {
-			pizzaService.savePizza(pizza);			
-		} catch (Exception e) {
-			return "create-update";
-		}
-		
-		return "redirect:/";
+		return storeUpdate(pizza, bindingResult);
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -74,6 +64,17 @@ public class PizzaController {
 	
 	@PostMapping("/edit/{id}")
 	public String update(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
+		return storeUpdate(pizza, bindingResult);
+	}
+	
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable int id, Model model) {
+		pizzaService.deleteById(id);
+		
+		return "redirect:/";
+	}
+	
+	private String storeUpdate(Pizza pizza, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "create-update";
 		}
@@ -83,13 +84,6 @@ public class PizzaController {
 		} catch (Exception e) {
 			return "create-update";
 		}
-		
-		return "redirect:/";
-	}
-	
-	@PostMapping("/delete/{id}")
-	public String delete(@PathVariable int id, Model model) {
-		pizzaService.deleteById(id);
 		
 		return "redirect:/";
 	}
